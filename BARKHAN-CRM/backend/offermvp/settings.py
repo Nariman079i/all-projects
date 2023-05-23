@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 ROOT_APPS = [
     'users.apps.UsersConfig',
-    'barkan.apps.CrmConfig',
+    'barkan.apps.BarkanConfig',
 ]
 INSTALLED_APPS = [
     'django.contrib.admin',

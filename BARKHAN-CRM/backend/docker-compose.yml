@@ -10,8 +10,4 @@ services:
     ports:
       - 8002:8000
 
-  redis:
-    image: redis
-    command: redis-server
-    ports:
-      - 6379:6379
+

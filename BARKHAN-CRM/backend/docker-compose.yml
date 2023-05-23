@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  project:
+  crm-barkan:
     build: .
-    container_name: barkan
+    container_name: crm-barkan
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/project

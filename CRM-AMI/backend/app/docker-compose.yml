@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  crm-ami:
+    build: .
+    container_name: crm-ami
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/project
+    ports:
+      - 8001:8000
+

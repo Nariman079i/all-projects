@@ -8,6 +8,6 @@ services:
     volumes:
       - .:/project
     ports:
-      - 8002:8000
+      - 8006:8000
 
 

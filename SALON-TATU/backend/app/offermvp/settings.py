@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["*"]
 ROOT_APPS = [
     'users.apps.UsersConfig',
     'tatu.apps.TatuConfig',
+    "infsys.apps.InfsysConfig"
 ]
 INSTALLED_APPS = [
     'django.contrib.admin',

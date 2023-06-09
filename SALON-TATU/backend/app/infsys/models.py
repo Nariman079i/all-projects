@@ -13,7 +13,7 @@ class MasterCRM(models.Model):
     chart = models.CharField(verbose_name="График работы", max_length=100,default="пн/сб",null=False)
 
     def __str__(self):
-        return self.name + " " + self.tel
+        return f"{self.name} {self.surname} -> {self.tel}"
 
     class Meta:
         verbose_name = "Мастера"

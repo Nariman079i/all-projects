@@ -27,7 +27,7 @@ class ClientCRM(models.Model):
 
     def __str__(self):
         try:
-            return f"{self.name} -> {self.tel}"
+            return f"{self.name} {self.surname} -> {self.tel}"
         except:
             return f" Клиент №{self.pk}"
 

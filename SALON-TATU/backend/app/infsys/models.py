@@ -7,10 +7,10 @@ from .admin import admin
 
 
 class MasterCRM(models.Model):
-    name = models.CharField(verbose_name="Имя", max_length=100, default=" ")
-    surname = models.CharField(verbose_name="Фамилия", max_length=100,default="")
-    tel = models.CharField(verbose_name="Номер телефона", max_length=100,default="+7")
-    chart = models.CharField(verbose_name="График работы", max_length=100,default="пн/сб")
+    name = models.CharField(verbose_name="Имя", max_length=100, default=" ",null=False)
+    surname = models.CharField(verbose_name="Фамилия", max_length=100,default="",null=False)
+    tel = models.CharField(verbose_name="Номер телефона", max_length=100,default="+7",null=False)
+    chart = models.CharField(verbose_name="График работы", max_length=100,default="пн/сб",null=False)
 
     def __str__(self):
         return self.name + " " + self.tel
@@ -21,16 +21,20 @@ class MasterCRM(models.Model):
 
 
 class ClientCRM(models.Model):
-    name = models.CharField(verbose_name="", max_length=100, default=" ")
-    surname = models.CharField(verbose_name="Фамилия", max_length=100, default="")
-    tel = models.CharField(verbose_name="Номер телефона", max_length=100, default="+7")
+    name = models.CharField(verbose_name="Имя", max_length=100, default=" ", null=False)
+    surname = models.CharField(verbose_name="Фамилия", max_length=100, default="",null=False)
+    tel = models.CharField(verbose_name="Номер телефона", max_length=100, default="+7",null=False)
 
     def __str__(self):
-        return self.name + " " + self.tel
+        try:
+            return f"{self.name} -> {self.tel}"
+        except:
+            return f" Клиент №{self.pk}"
 
     class Meta:
         verbose_name = "Клиенты"
         verbose_name_plural = "Клиент"
+
 class SupportCRM(models.Model):
     master = models.ForeignKey(MasterCRM, on_delete=models.SET_NULL, null=True)
     client = models.ForeignKey(ClientCRM, on_delete=models.SET_NULL, null=True)
@@ -38,7 +42,12 @@ class SupportCRM(models.Model):
     created_at = models.DateTimeField(null=True)
 
     def __str__(self):
-        return self.master.__str__() + " -> "  + self.client + " -> " + self.service.__str__()
+        try:
+            return self.master.__str__() + " -> "  + self.client.__str__() + " -> " + self.service.__str__()
+        except:
+            return f"Заявка №{self.pk}"
+        finally:
+            return f"Заявка №{self.pk}"
 
     class Meta:
         verbose_name = "Записи"
